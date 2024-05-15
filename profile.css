@@ -1,0 +1,92 @@
+/* General styles */
+body {
+    font-family: "Playfair Display", serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+#welcome{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 30px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h3 {
+    
+    margin: 0 auto;
+    font-size: 35px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    
+}
+
+
+p {
+    font-size: 16px;
+    color: #666;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto 20px; /* Butonu ortalamak ve altına boşluk bırakmak için */
+}
+
+button:hover {
+    background-color: #484848;
+}
+
+/* Orders section styles */
+#ordersList {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    text-align: center;
+    
+    
+}
+
+#order {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    text-align: center;
+    min-width: 40%;
+    width: fit-content;
+    margin: 0 auto;
+    border: 2px solid;
+    border-radius: 7px;
+    border-color: #e1e7ec;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+

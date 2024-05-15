@@ -1,0 +1,49 @@
+body {
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+}
+
+.nav-pills .nav-link:hover {
+    background-color: black;
+    color: white !important; 
+    
+}
+
+.nav-pills .nav-link {
+  transition: all 0.3s; 
+}
+
+.btn-secondary:hover {
+    background-color: black !important;
+    color: white !important;
+  }
+
+  .nav-item  {
+    padding: 5px;
+  }
+
+  .bi-person-fill {
+    padding: 5px;
+  }
+
+  .bi-cart {
+    padding: 5px;
+  }
+
+    
+  .container-two {
+    padding: 20px; 
+    font-size: 28px; 
+    margin-left: 20px;
+    margin-top: 232px;
+  }
+
+  .container {
+    font-size: 20px;
+  }
+
+  li {
+    padding: 10px;
+  }

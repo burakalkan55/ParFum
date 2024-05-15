@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+
+    <!-- Firebase SDK -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.4/firebase-auth.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js"></script>
+
+    <link rel="stylesheet" href="profile.css">
+
+</head>
+
+<body>
+
+    <h1 id="welcome">Welcome to Your Profile Page!</h1>
+    <h3>Your Orders</h3>
+
+    <div id="ordersList">
+        <!-- Siparişler burada görüntülenecek -->
+    </div>
+    <button id="logoutBtn">Logout</button>
+    <button id="goBackBtn">Go Shopping</button>
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js';
+        import { getAuth, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/9.6.4/firebase-auth.js';
+        import { getDatabase, ref, onValue } from 'https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js';
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCP7Nlbbo6BfFKsDJsqIFdbXLh3va5LbOs",
+            authDomain: "webtechv3.firebaseapp.com",
+            databaseURL: "https://webtechv3-default-rtdb.firebaseio.com", // Firebase Realtime Database URL'si
+            projectId: "webtechv3",
+            storageBucket: "webtechv3.appspot.com",
+            messagingSenderId: "316228727012",
+            appId: "1:316228727012:web:0aabf963396d1d03a4fcf1"
+        };
+
+        // Firebase'i başlat
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const database = getDatabase(app);
+
+        // Kullanıcı durumu değişiklikleri için dinleyici
+        onAuthStateChanged(auth, user => {
+            if (user) {
+                // Kullanıcı oturum açtı
+                const displayName = user.email;
+                document.querySelector('h1').innerText = `Welcome, ${displayName}!`;
+                document.getElementById('logoutBtn').style.display = 'block';
+
+                // Kullanıcının siparişlerini veritabanından alın
+                const ordersRef = ref(database, `users/${user.uid}/orders`);
+                onValue(ordersRef, snapshot => {
+                    const orders = snapshot.val();
+                    if (orders) {
+                        displayOrders(orders);
+                    } else {
+                        document.getElementById('ordersList').innerHTML = "<p>No orders found.</p>";
+                    }
+                });
+            } else {
+                //Hiçbir kullanıcı oturum açmadı
+                document.querySelector('h1').innerText = "Please sign in!";
+                document.getElementById('logoutBtn').style.display = 'none';
+                window.location.href = "signin.html";
+            }
+        });
+        // Siparişleri sayfada görüntüleme işlevi
+        function displayOrders(orders) {
+            const ordersList = document.getElementById('ordersList');
+            ordersList.innerHTML = ""; // Clear previous orders
+
+            // Her siparişi yineleyin ve bunları görüntülemek için HTML öğeleri oluşturun
+            for (const orderId in orders) {
+                const order = orders[orderId];
+                const orderElement = document.createElement('div');
+                orderElement.innerHTML = `
+            <h2>Order ID: ${orderId}</h2>
+            <p>Order Date: ${formatDate(order.timestamp)}</p>
+            <p>Address: ${order.address}, ${order.country}, ${order.zip}</p>
+            <p>Items: ${displayOrderItems(order.items)}</p>
+            <p>Price: ${order.price}</p>
+            
+        `;
+
+                orderElement.id = "order";
+                ordersList.appendChild(orderElement);
+
+                const brElement = document.createElement('br');
+                ordersList.appendChild(brElement);
+
+            }
+        }
+
+        // Firebase zaman damgasını anlamlı bir tarihe dönüştürme işlevi
+        function formatDate(timestamp) {
+            if (!timestamp || isNaN(timestamp)) {
+                return "No date available";
+            }
+
+            // Firebase timestamp, milisaniye cinsinin bir değer olarak gelir
+            const date = new Date(timestamp);
+
+            // Tarihi istediğiniz biçimde biçimlendirin (örneğin, MM/DD/YYYY saat: dakika: saniye)
+            const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+
+            return formattedDate;
+        }
+        // Sipariş öğelerini dize olarak görüntüleme işlevi
+        function displayOrderItems(items) {
+            let itemString = "";
+            for (const itemId in items) {
+                const item = items[itemId];
+                itemString += `${item.name} (Quantity: ${item.quantity}), `;
+            }
+            // Dizedeki son virgül ve boşluğu kaldırın
+            return itemString.slice(0, -2);
+        }
+
+        // Oturum kapatma işlemini gerçekleştirmek için etkinlik dinleyicisi ekleyin
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            signOut(auth).then(() => {
+                // Çıkış başarılı, giriş sayfasına yönlendiril
+                window.location.href = "signin.html";
+            }).catch((error) => {
+                // Bir hata oluştu.
+                console.error(error);
+            });
+        });
+
+        document.getElementById("goBackBtn").addEventListener('click', () => {
+            window.location.href = "index.html"
+        });
+    </script>
+</body>
+</html>

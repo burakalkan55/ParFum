@@ -1,0 +1,67 @@
+
+body{
+  font-weight: bold;
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-size:20px;
+}
+
+.card {
+  box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+}
+
+.header {
+    font-size: 20px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0 solid rgba(0,0,0,.125);
+  border-radius: 1rem;
+}
+
+.card-body {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1.5rem 1.5rem;
+}
+
+.container-two {
+  font-size: 20px;
+}
+
+.nav-pills .nav-link:hover {
+  background-color: black;
+  color: white !important; 
+}
+
+.nav-pills .nav-link {
+transition: all 0.3s; 
+}
+
+li {
+padding: 10px;
+}
+
+.bi-person-fill {
+  padding: 5px;
+}
+
+.bi-cart {
+  padding: 5px;
+}
+
+.bi-trash {
+margin-top: 5px;
+}
+
+

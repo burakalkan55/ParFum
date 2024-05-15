@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARFUMÉ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="style4.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+</head>
+<body>
+
+    <div class="header">
+        <div class="container">
+            <header class="d-flex flex-wrap justify-content-between py-3 mb-4 border-bottom">
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                  <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                  <span class="fs-4 fw-bold" style="font-size: 1em;">PARFUMÉ</span> 
+                </a>
+                
+                <ul class="nav nav-pills">
+                  <li class="nav-item"><a href="../index.html" class="nav-link text-dark big fw-bold" aria-current="page">Home</a></li>
+                  <li class="nav-item"><a href="../products.html" class="nav-link text-white active bg-dark big fw-bold">Products</a></li>
+                  <li class="nav-item"><a href="../profile.html" class="nav-link text-dark fw-bold"><svg xmlns="http://www.w3.org/2000/svg" width="33" height="36" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                      <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg></a></li>
+                  <li class="nav-item"><a href="../cart.html" class="nav-link text-dark fw-bold"><svg xmlns="http://www.w3.org/2000/svg" width="33" height="36" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                      <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                    </svg>
+                    <span id="cartCount" class="ms-1">0</span>
+                  </a></li>
+                </ul>
+              </header>
+              
+          </div>
+    </div>
+
+
+    <div class="content">
+        <div class="container col-xxl-8 px-4 py-5">
+            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+              <div class="col-10 col-sm-8 col-lg-6">
+                <img src="../assets/4.jpg" class="d-block mx-lg-auto img-fluid" alt="parfum2" width="700" height="500" loading="lazy">
+              </div>
+              <div class="col-lg-6">
+                <h1 class="display-5 fw-bold lh-1 mb-3">Yellow Perfume</h1>
+                <p class="lead my-5">$10</p>
+                <p class="lead my-5"> YSL Woman EDP Yellow Perfume 100ml</p>
+                <p class="lead my-5">An Amber Floral fragrance for women. Top notes: Saffron, Ginger, Bergamot and Tangerine; middle notes are Lavender and Orange Blossom; base notes are Honey, Tonka Bean, Bourbon Vanilla and Vetiver. 100 ml.</p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                   <button class="w-100 my-5 btn btn-dark btn-custom addToCart" type="submit">Add To Card</button>
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <a href="../products.html" class="w-100 btn btn-custom btn-secondary bg-white text-dark">
+                        <i class="fas fa-arrow-left mr-2"></i> Continue Shopping
+                    </a>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <div class="container-two">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mx-10 px-10 my-4 border-top">
+        <div class="col-md-4 mx-10 d-flex align-items-center">
+          <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+            <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+          </a>
+          <span class="mb-3 mb-md-0 text-muted">© 2024 PARFUMÉ, Inc</span>
+        </div>
+    
+        <ul class="nav col-md-4 mx-10 justify-content-end list-unstyled d-flex">
+          <li class="ms-3"><a class="text-muted" href="https://app.swapkaart.com/id/wh7DDYI2oQcWikutV0MU"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
+            <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1 1 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4 4 0 0 1-.128-1.287z"/>
+            <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243z"/>
+          </svg></a></li>
+        </ul>
+      </footer>
+    </div>
+      <script src="info.js" charset="utf-8"></script>
+    
+</body>
+</html>
